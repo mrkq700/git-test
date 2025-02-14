@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'I'm performing Build....'
                 // Add your build steps here
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'I'm Deploying...'
                 // Add your deploy steps here
             }
         }
