@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/mrkq700/git-test.git' 
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build('nginx-webserver', '-f Dockerfile .')
+                }
+            }
+        }
+        stage('Deploy Docker Container') {
+            steps {
+                script {
+                    docker.image('nginx-webserver').run('-d -p 80:80 --name my_nginx')
+                }
+            }
+        }
+    }
+}
